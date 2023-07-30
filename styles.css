@@ -1,20 +1,21 @@
 .navbar-size {
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
+    background-color: #042e1a;
 }
 .user-image-size {
-    height: 56px;
-    margin: 4px 0;
+    height: 55px;
+    margin: 4px 0 0 4px;
 }
 .main-body {
-    background-color: #F28487;
-    color: white;
+    background-color: #c59b47;
+    color: rgb(2, 41, 14);
 }
 .materialboxed-image {
     margin: 0 auto;
     height: 400px;
 }
 .click-me-button {
-    background-color: #EE6E73;
+    background-color: #042e1a;
     margin-top: 50px;
 }
