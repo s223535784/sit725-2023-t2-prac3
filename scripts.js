@@ -69,7 +69,7 @@ function postCat(cat){
 
 function getAllCats(){
     console.log('inside getAllCats');
-    $.get('/api/cats', (result) => {
+    $.get('/api/cat', (result) => {
         console.log('inside getAllCats 2');
 
         if (result.statusCode === 200) {
