@@ -1,22 +1,22 @@
-let collection = require('../model/cat');
+let collection = require('../model/season_model');
 
-function postCat(cat, callback){
-    //ask model to perform db
-    let cat =req.body;
-    collection.postCat(cat, (err, result) =>{
+const postCat = (req,res) => {
+    let cat = req.body;
+    console.log(cat);
+    collection.postCat(cat, (err,result) => {
         if(!err){
-            res.json({statusCode:200,data:result,message:'post success'});
+            res.json({statusCode:201,data:result,message:'success'});
         }
     });
 }
 
-function getAllCats(cat, callback){
-    collection.getAllCats(cat, (err,result)=>{
-            console.log(result);
-            if(!err){
-                res.json({statusCode:200,data:result,message:'get success'});
-            }
-        });
+const getAllCats = (req,res) => {
+    collection.getAllCats((err,result)=>{
+        console.log(result);
+        if(!err){
+            res.json({statusCode:200,data:result,message:'success'});
+        }
+    });
 }
 
 module.exports = {postCat, getAllCats};

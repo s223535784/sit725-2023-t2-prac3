@@ -2,7 +2,7 @@ let express = require('express');
 let app = express();
 let port = process.env.port || 3000;
 require('./dbConnection');
-let router = require('../routes/router');
+let router = require('./routes/router');
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://s223535784:s223535784@cluster0.b7c8yhu.mongodb.net/?retryWrites=true&w=majority";let collection;
@@ -40,7 +40,7 @@ app.listen(port, ()=>{
 
 
 
-app.get('/', function (req,res) {
-    res.render('index.html');
-});
+// app.get('/', function (req,res) {
+//     res.render('index.html');
+// });
 
