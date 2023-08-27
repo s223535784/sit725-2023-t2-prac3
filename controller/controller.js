@@ -1,5 +1,17 @@
 let collection = require('../model/season_model');
 
+const deleteCat = (req,res) =>{
+    let cat = req.body
+    collection.removeCat(cat, (error, result)=>{
+        if(error){
+            res.json({statusCode:400, message:error})
+        }
+        else{
+            res.json({statusCode:200, data: result, message: 'Successfully removed'})
+        }
+    })
+}
+
 const postCat = (req,res) => {
     let cat = req.body;
     console.log(cat);
@@ -19,4 +31,4 @@ const getAllCats = (req,res) => {
     });
 }
 
-module.exports = {postCat, getAllCats};
+module.exports = {postCat, getAllCats, deleteCat};
