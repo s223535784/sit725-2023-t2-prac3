@@ -3,44 +3,26 @@ let app = express();
 let port = process.env.port || 3000;
 require('./dbConnection');
 let router = require('./routes/router');
-
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://s223535784:s223535784@cluster0.b7c8yhu.mongodb.net/?retryWrites=true&w=majority";let collection;
-// let collection;
+let http = require('http').createServer(app);
+const { Socket } = require('socket.io');
+let io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/api/cat', router);
 
+io.on('connection', (socket) => {
+    console.log('a client is connected');
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
 
-app.listen(port, ()=>{
-    console.log('express server started');
-    //runDB();
+    setInterval(() => {
+        socket.emit('number', parseInt(Math.random() * 10));
+    }, 1000);
 });
 
-// const client = new MongoClient(uri, {
-//     serverApi: {
-//       version: ServerApiVersion.v1,
-//       strict: true,
-//       deprecationErrors: true,
-//     }
-//   });
-
-// async function runDB() {
-//     try {
-//       // Connect the client to the server	(optional starting in v4.7)
-//       await client.connect();
-//       collection = client.db().collection('Cats');
-//       console.log(collection);
-//     } catch (ex) {
-//         console.error(ex);
-//     }
-// }
-
-
-
-// app.get('/', function (req,res) {
-//     res.render('index.html');
-// });
-
+http.listen(port, ()=>{
+    console.log('express server started');
+});

@@ -32,17 +32,6 @@ const addCards = (items) => {
     });
 }
 
-// const formSumitted = () => {
-//     let formData = {};
-//     formData.title = $('#title').val();
-//     formData.subTitle = $('#subTitle').val();
-//     formData.path = $('#path').val();
-//     formData.description = $('#description').val();
-
-//     console.log(formData);
-//     postCat(formData);
-// }
-
 const formSubmitted = () => {
     let formData = {};
     formData.title = $('#title').val();
@@ -78,6 +67,11 @@ function getAllCats(){
         }
     });
 }
+
+let socket = io();
+socket.on('number', (msg) => {
+    console.log('Random Number: ' + msg);
+});
 
 $(document).ready(function(){
     $('.materialboxed').materialbox();

@@ -3,7 +3,7 @@ const request = require("request");
 let url = 'http://localhost:3000/api/cat';
 let cat = {
     title: 'test-post-cat',
-    path: 'test-post-cat',
+    path: 'images/winter2.jpg',
     subTitle: 'test-post-cat',
     description: 'test-post-cat'
 };
